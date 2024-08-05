@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="message"></div>
+    <script>
+      const dt = new Date();
+      const month = dt.getMonth();
+      let msg;
+
+      switch (month) {
+        case 0:
+          msg = "January 4 is National Spagetti Day!";
+          break;
+        case 1:
+          msg = "Febraury 9 is National Pizza Day!";
+          break;
+
+        case 2:
+          msg = "March 26 is National Spinac Day!";
+
+        case 3:
+          msg = "April 26 is National Pretzel Day!";
+        default:
+          msg = "No holdays this month. ";
+      }
+
+      const el = document.getElementById("message");
+      el.innerHTML = msg;
+    </script>
+  </body>
+</html>
