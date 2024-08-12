@@ -325,3 +325,22 @@ const bookStore = {
     this.books = newList;
   },
 };
+
+//Chaining Functions
+const robot = {
+  currentActivity: undefined,
+  walk() {
+    this.currentActivity = "walking";
+    return this;
+  },
+  talk() {
+    this.currentActivity = "talking";
+    return this;
+  },
+  write() {
+    this.currentActivity = "writing";
+    return this;
+  },
+};
+
+robot.walk().talk().write();

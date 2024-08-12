@@ -14,7 +14,7 @@
       const bookstore = {
         books: ["Superman", "Spiderman", "Ironman"],
         removeBook(title) {
-          let newList = this.books.filter((book) => book === title);
+          let newList = this.books.filter((book) => book != title);
           this.books = newList;
           this.diaplayBookStore();
         },
