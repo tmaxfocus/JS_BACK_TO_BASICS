@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazing JavaScript Bookstore</title>
+  </head>
+  <body>
+    <h1>The Books</h1>
+    <div id="bookstore"></div>
+    <h1>Your Cart</h1>
+    <div id="cart"></div>
+    <script>
+      const bookstore = {
+        books: ["Superman", "Spiderman", "Ironman"],
+        removeBook(title) {
+          let newList = this.books.filter((book) => book === title);
+          this.books = newList;
+          this.diaplayBookStore();
+        },
+
+        diaplayBookStore() {
+          const renderTarget = document.getElementById("bookstore");
+          const targetBooks = this.books.map((book) => `<p>${book}</p>`);
+          renderTarget.innerHTML = targetBooks.join("");
+          shoppingCart.displaycart(this.removeBook.bind(this));
+        },
+      };
+
+      const shoppingCart = {
+        itemsInCart: ["Ironman"],
+        hadleClick(removeBook) {
+          removeBook(this.itemsInCart);
+        },
+
+        displaycart(clickHandler) {
+          const rendertarget = document.getElementById(`cart`);
+          const itemsInCrt = this.itemsInCart.map((item) => `<p>${item}</p>`);
+          const checkoutbutton = "<button id='checkout'>Ceck Out </button>";
+          rendertarget.innerHTML = itemsInCrt.join("") + checkoutbutton;
+          document
+            .getElementById("checkout")
+            .addEventListener("click", () => this.hadleClick(clickHandler));
+        },
+      };
+
+      bookstore.diaplayBookStore();
+    </script>
+  </body>
+</html>
