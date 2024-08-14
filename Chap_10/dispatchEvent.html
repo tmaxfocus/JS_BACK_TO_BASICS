@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dispatch Events</title>
+  </head>
+  <body>
+    <input id="test-text" type="text" value="this is a test" />
+    <button id="stmp">stamClickedMe</button>
+    <script>
+      const focusEvent = new Event("focus");
+      const testInput = document.getElementById("test-text");
+      testInput.addEventListener("focus", (e) => {
+        console.log(`${e.target.value}`);
+        console.log(`The active element is: ${document.activeElement.id}`);
+      });
+
+      testInput.dispatchEvent(focusEvent);
+      //Triggering built-in events
+      testInput.focus();
+      //using dispatchEvent() and then calling focus(), you created two focus events.
+
+      //Creating and triggering custom events
+
+      //       The dispatchEvent() method can be used to dispatch custom events containing
+      // data as well. To pass data with an event, pass an object to the second parameter of
+      // the event interface containing a property called detail.
+      // For example, you might want to create an event that passes a date object to the
+      // event listener when it's clicked, as in the following example:
+      const testInput2 = document.getElementById("stmp");
+      const event = new CustomEvent("stampedClick", { detail: new Date() });
+
+      testInput2.addEventListener("stampedClick", (e) => {
+        console.log(`Clicked at`, e.detail);
+      });
+
+      //Removing event listeners
+      const handleClick = function (e) {
+        console.log("click handled");
+      };
+      testInput2.addEventListener("click", handleClick);
+      //testInput2.removeEventListener("click", handleClick);
+
+      //e.preventDefault();
+    </script>
+  </body>
+</html>
