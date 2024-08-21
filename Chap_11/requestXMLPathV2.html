@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="text-display-area"></div>
+    <script>
+      const displayArea = document.getElementById("text-display-area");
+
+      async function openBook() {
+        try {
+          const bookText = await bookLoad("./mobydick.txt");
+          displayArea.innerText = bookText;
+        } catch (e) {
+          displayArea.innerText = e;
+        }
+      }
+      function bookLoad(url) {
+        return new Promise((resolve, reject) => {
+          let request = new XMLHttpRequest();
+          request.open("GET", url);
+          request.onload = function () {
+            if (request.status === 200) {
+              resolve(request.response);
+            } else {
+              reject(
+                Error(`The text couldn't be loaded: ${request.statusText}`)
+              );
+            }
+          };
+
+          request.onerror = function () {
+            reject(Error("There was a network error."));
+          };
+
+          request.send();
+        });
+      }
+
+      openBook();
+      //   const displayArea = document.getElementById("text-display-area");
+      //   bookLoad("./mobydick.txt").then(
+      //     (response) => {
+      //       displayArea.innerText = response;
+      //     },
+      //     (error) => {
+      //       console.log(error);
+      //     }
+      //   );
+
+      /*
+      Behind the scenes, async functions use promises. The await keyword is essentially a .then callback, and the return statement in an async function is the final 
+link in a promise chain. Async functions always return a promise.*/
+    </script>
+  </body>
+</html>

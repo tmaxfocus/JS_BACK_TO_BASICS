@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      async function fetchTheData(url) {
+        try {
+          const response = await fetch(ul);
+          if (response.status >= 200 && response.status <= 299) {
+            return response.json();
+          } else {
+            throw Error(response.statusText);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      //Getting JSON dat
+      const person = '{"firstName": "Conway","age": 59}';
+
+      const personObject = JSON.parse(person);
+
+      //Sending JSON data
+      const personJSON = JSON.stringify(personObject);
+    </script>
+  </body>
+</html>
