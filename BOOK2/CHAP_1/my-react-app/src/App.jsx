@@ -6,6 +6,8 @@ import WelcomeScreen4 from "./ConditionalRedering/ElementVariables/WelcomeScreen
 import Message from "./Expressions/Message";
 import CustomerList from "./MakingList/CustomerList";
 import Searchform from "./Searchform";
+import BlogPostBody from "./usingCss/BlogPostBody";
+import Article from "./usingCss/Article";
 
 function App() {
   const _customers = [
@@ -44,6 +46,12 @@ function App() {
       <WelcomeScreen3 loggedIn={true} isHuman={true}></WelcomeScreen3>
       <WelcomeScreen4 loggedIn={false}></WelcomeScreen4>
       <CustomerList customers={_customers}></CustomerList>
+      <BlogPostBody blogBodyText={"Learning react.js is fun"}></BlogPostBody>
+      <Article
+        headline={"Introduction to React.JS"}
+        authorName={"TmaxNoda"}
+        bodyText={"This is the begining of react.js"}
+      ></Article>
     </>
   );
 }
